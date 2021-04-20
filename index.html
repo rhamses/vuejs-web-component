@@ -3,13 +3,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teste de Web Component - Vuejs</title>
-  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.js"></script>
   <script src="wc-one/dist/wc-one.min.js"></script>
   <script src="wc-two/dist/wc-two.min.js"></script>
 </head>
 <body>
   <h1>Lista de web components vue</h1>
-  <wc-one></wc-one>
-  <wc-two></wc-two>
+  <wc-one id="WcOne"></wc-one>
+  <hr>
+  <wc-two id="WcTwo"></wc-two>
+  <script>
+    const WcOne = document.querySelector("#WcOne");
+    const WcTwo = document.querySelector("#WcTwo");
+    WcOne.addEventListener("loadData", function(data){
+      alert("Falou com o pai que é html");
+      console.log("detalhes -->", data.detail[0]);
+      WcTwo.form = data.detail[0];
+    })
+  </script>
 </body>
 </html>
