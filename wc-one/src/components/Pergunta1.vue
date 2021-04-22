@@ -1,5 +1,5 @@
 <template>
-  <div>
+    <div>
       <h1>Este é o componente 1!</h1>
     <form>
       <legend>Preencha os dados</legend>
@@ -20,10 +20,10 @@
 </template>
 
 <script>
-  import store from './store'
+  import store from '../store'
   export default {
     store,
-    name: 'App',
+    name: 'Pergunta1',
     data(){
       return {
         states: [],

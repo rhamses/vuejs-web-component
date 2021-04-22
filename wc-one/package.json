@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target wc --name wc-one ./src/App.vue",
+    "build": "vue-cli-service build --target wc --name wc-one ./src/Main.vue",
+    "build-async": "vue-cli-service build --target wc-async --name wc './src/components/*.vue'",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target wc --name wc-two ./src/App.vue",
+    "build-async": "vue-cli-service build --target wc-async --name wd './src/components/*.vue'",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

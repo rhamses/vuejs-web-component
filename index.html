@@ -5,22 +5,86 @@
   <title>Teste de Web Component - Vuejs</title>
   <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
   <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.js"></script>
-  <script src="wc-one/dist/wc-one.min.js"></script>
-  <script src="wc-two/dist/wc-two.min.js"></script>
+  <script src="https://unpkg.com/vuex-persistedstate/dist/vuex-persistedstate.umd.js"></script>
+  <script src='wc-one/dist/wc.js'></script>
+  <script src='wc-two/dist/wd.js'></script>
+  <style>
+    html, * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      display: flex;
+      height:100vh;
+      width: 100vw;
+    }
+
+    #mainMenu {
+      outline: solid 1px red;
+    }
+
+    #mainMenu {
+      flex-basis: 25%;
+      outline: solid 1px red;
+    }
+
+    #work {
+      padding: 1rem;
+      flex: 1;
+    }
+  </style>
 </head>
 <body>
-  <h1>Lista de web components vue</h1>
-  <wc-one id="WcOne"></wc-one>
-  <hr>
-  <wc-two id="WcTwo"></wc-two>
-  <script>
-    const WcOne = document.querySelector("#WcOne");
-    const WcTwo = document.querySelector("#WcTwo");
-    WcOne.addEventListener("loadData", function(data){
-      alert("Falou com o pai que é html");
-      console.log("detalhes -->", data.detail[0]);
-      WcTwo.form = data.detail[0];
-    })
-  </script>
+  <main id='app'>
+    <nav id='mainMenu'>
+      <h1>Lista de web components vue</h1>
+      <ul>
+        <li>
+          <h2>Web Component 1</h2>
+        </li>
+        <li>
+          <a data-component='wc-pergunta1'>View 1</a>
+        </li>
+        <li>
+          <a data-component='wc-pergunta2'>View 2</a>
+        </li>
+        <li>
+          <h2>Web Component 2</h2>
+        </li>
+        <li>
+          <a data-component='wd-results'>View 1</a>
+        </li>
+        <li>
+          <a data-component='wd-padding'>View 2</a>
+        </li>
+      </ul>
+    </nav>
+    <section id='work'>
+      <h1>Clique no menu lateral para comecar</h1>
+    </section>
+    <script>
+      const components = Array.from(document.querySelectorAll('[data-component]'));
+      const work = document.querySelector('#work');
+
+      function insertComponent(item){
+        const wc = document.createElement(item);
+
+        if (work.childElementCount > 0) {
+          Array.from(work.children).forEach(child => {
+            work.removeChild(child);
+          });
+        }
+
+        work.append(wc);
+      }
+
+      components.forEach(item => {
+        item.addEventListener('click', function(e){
+          insertComponent(item.dataset.component);
+        })
+      });
+    </script>
+  </main>
 </body>
 </html>
